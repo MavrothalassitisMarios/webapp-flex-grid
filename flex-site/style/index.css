@@ -1,0 +1,184 @@
+:root {
+    --navy:#002e94;
+    --blue: #003AA9;
+    --beige:#e1ceb5;
+    --wedding:#ffe7cc;
+}
+
+* {
+    box-sizing: border-box;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+header {
+    background-color: var(--navy);
+    color: var(--wedding);
+    flex: 1 20%;
+}
+
+.header-title {
+    margin-left: 1rem;
+}
+
+main {
+    background-color: var(--wedding);
+    flex: 2 80%;
+    height: 100vh;
+    overflow: scroll;
+    scroll-behavior: smooth;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+nav li {
+    list-style: none;
+    
+}
+
+nav li a {
+    text-decoration: none;
+    padding: 1rem;
+    color: var(--wedding);
+    display: block;
+}
+
+nav li a:hover {
+    background-color: var(--blue);
+}
+
+.banner {
+    text-align: center;
+}
+
+.banner img {
+    width: 300px;
+    height: auto;
+    border-radius: 10%;
+}
+
+.banner-img {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: lightgray;
+    border: 1px solid black;
+    display: block;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+pre {
+    white-space: pre-wrap;
+}
+
+.bgcolor-beige {
+    background-color: var(--beige);
+}
+
+section {
+    padding: 1rem;
+}
+
+.hamb {
+    position: absolute;
+    cursor: pointer;
+    padding: 10px;
+    top: 5rem;
+    right: 1rem;
+}
+
+.hamb-line {
+    background: white;
+    display: none;
+    height: 2px;
+    position: relative;
+    width: 30px;
+}
+
+.hamb-line::after,
+.hamb-line::before {
+    background: white;
+    /* prepei na mpei kapoio periexomeno estw keno 
+    epeidh oi psevdoklaseis after-before isxioun mono se 
+    elements me content */
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    transition: all .2s ease-in-out ;
+}
+
+.hamb-line::after {
+    top: 5px;
+}
+.hamb-line::before {
+    top: -5px;
+}
+
+.side-menu {
+    display: none;
+}
+
+.side-menu:checked ~ nav.active {
+    display: flex;
+}
+
+.side-menu:checked ~ .hamb .hamb-line {
+    /* na eksafanistei h mesaia */
+    background: transparent;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+.side-menu:checked ~ .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .container{
+        flex-direction: column;
+    }
+
+    header {
+        position: fixed ;
+    }
+    nav li {
+        text-align: center;
+    }
+
+    .hamb-line{
+        display: block;
+    }
+
+    nav.active {
+        display: none;
+    }
+}
